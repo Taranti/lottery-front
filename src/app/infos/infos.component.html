@@ -1,0 +1,72 @@
+<mat-dialog-content>
+    <form (ngSubmit)="fillInfos(f,data)" #f="ngForm">
+        <div>
+        <mat-form-field class="text">
+            <mat-label>Nom</mat-label>
+            <input  matInput name="name" ngModel required type="text" >
+        
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="text">
+            <mat-label>Prénom</mat-label>
+            <input  matInput name="firstName" ngModel required type="text" >
+        
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="text">
+            <mat-label>Nom de l'enfant</mat-label>
+            <input  matInput name="childName" ngModel required type="text" >
+        
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="text">
+            <mat-label>Prénom de l'enfant</mat-label>
+            <input  matInput name="childFirstName" ngModel required type="text" >
+        
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Enseignant de l'enfant</mat-label>
+            <mat-select matInput ngModel required name="teacher">
+              <mat-option *ngFor="let teacher of teachers" [value]="teacher">
+                {{teacher}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    </div>
+    
+    <div>
+        <mat-form-field class="text">
+            <mat-label>Téléphone </mat-label>
+            <input  matInput name="phone" ngModel required type="text" pattern="0[0-9]{9}" matTooltip="Format 0*********" matTooltipPosition='after' >
+        
+        </mat-form-field>
+    </div>
+   <!-- <div>
+        <mat-form-field>
+        <gold-phone-input 
+        ngModel
+        name="phone2"
+        label="France phone number"
+        country-code="33"
+        phone-number-pattern="X-XX-XX-XX-XX"
+        auto-validate>
+    </gold-phone-input>
+</mat-form-field>
+    </div>-->
+    <div>
+        <mat-form-field class="text">
+            <mat-label>Mail</mat-label>
+            <input  matInput name="mail" ngModel required type="email" pattern=".*@.*\..*">
+        
+        </mat-form-field>
+    </div >
+<div matTooltip="Veuillez remplir tout les champs" [matTooltipDisabled]="f.valid">
+    <button mat-button type="submit" mat-dialog-close [disabled]="!f.valid" >Confirmer</button>
+</div>
+    </form>
+</mat-dialog-content>
