@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import * as _ from 'lodash';
 import { Tile } from './models/tile.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { PartenairesComponent } from './partenaires/partenaires.component';
 
 
 @Component({
@@ -16,7 +17,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class AppComponent {
   title = 'lottery';
   dialogRef: MatDialogRef<InfosComponent>
-  baseUrl ="https://pure-retreat-07717.herokuapp.com/"
+  //baseUrl ="https://pure-retreat-07717.herokuapp.com/"
+  baseUrl ="http://localhost:3000/"
   lottery:Tile[]=[]
   constructor(public dialog:MatDialog,private http: HttpClient,private _snackBar: MatSnackBar) {
     this.http.get(this.baseUrl+'lottery').subscribe(res=>{
@@ -26,6 +28,7 @@ export class AppComponent {
         tile.empty=dbTile.empty
         return tile
       })
+      this.dialog.open(PartenairesComponent)
       console.log(this.lottery)
     })
    
@@ -64,5 +67,9 @@ export class AppComponent {
     else{
       console.log(tile)
     }*/
+  }
+
+  openPartenaires(){
+    this.dialog.open(PartenairesComponent)
   }
 }

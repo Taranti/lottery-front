@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "lottery-upec"
+  },
+  "targets": {
+    "lottery-upec": {
+      "hosting": {
+        "lottery": [
+          "lottery-upec"
+        ]
+      }
+    }
+  }
+}

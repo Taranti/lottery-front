@@ -1,11 +1,15 @@
+
 <div>
   <h1 class="title">Tombola UPEC</h1>
 <div class="fullscren lottery">
-<mat-grid-list cols="12" rowHeight="0.8:0.5" class="lottery">
+<mat-grid-list cols="14" rowHeight="0.8:0.5" class="lottery">
   <mat-grid-tile
       *ngFor="let tile of lottery" [ngClass]="{empty:tile.empty , filled:!tile.empty}" (click)="fill(tile)">
         {{tile.id}}
     </mat-grid-tile>
 </mat-grid-list>
+</div>
+<div class="center-button">
+<button mat-button (click)="openPartenaires()" class="title lottery-button" color="primary">Voir les partenaires</button>
 </div>
 </div>

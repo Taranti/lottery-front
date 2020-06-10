@@ -15,10 +15,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { PartenairesComponent } from './partenaires/partenaires.component';
 @NgModule({
   declarations: [
     AppComponent,
-    InfosComponent
+    InfosComponent,
+    PartenairesComponent
   ],
   imports: [
     BrowserModule,
@@ -35,9 +38,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatTooltipModule,
     MatSelectModule,
     MatSnackBarModule,
+    MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents:[InfosComponent]
+  entryComponents:[InfosComponent,PartenairesComponent]
 })
 export class AppModule { }

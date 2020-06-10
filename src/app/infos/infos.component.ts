@@ -20,8 +20,9 @@ export interface DialogData extends Tile {
 
 
 export class InfosComponent implements OnInit {
-  baseUrl ="https://pure-retreat-07717.herokuapp.com/"
-  teachers=["Véronique","Emmanuelle","Vanessa","Claudia","Patrice","Françoise","Mélodie","Muriel"]
+  //baseUrl ="https://pure-retreat-07717.herokuapp.com/"
+  baseUrl ="http://localhost:3000/"
+  teachers=["Patrice Fouquet/Julien Timon","Muriel Avanzini","Mélodie Beaubit/Séverine Mouton","Patricia Della-Corte","Véronique Gazeau","Isabelle Maury","Françoise Morisson","Muriel"]
   
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData,private http: HttpClient,private dialogRef: MatDialogRef<InfosComponent>,private _snackBar: MatSnackBar) {
     
@@ -34,14 +35,17 @@ export class InfosComponent implements OnInit {
 
   fillInfos(form: NgForm,tile:Tile){
 
-    this.http.get(this.baseUrl+'lottery/phone/'+form.value.phone).subscribe((num:Number)=>{
+    const childFirstName=form.value.childFirstName.toLowerCase()
+    const childName=form.value.childName.toLowerCase()
+
+    this.http.get(`${this.baseUrl}lottery/name/${childFirstName}/${childName}`).subscribe((num:Number)=>{
         if(num<3){
           const infos=new Infos()
           infos.class=form.value.teacher
           infos.name=form.value.name 
           infos.firstName=form.value.firstName 
-          infos.childFirstName=form.value.childFirstName
-          infos.childName=form.value.childName
+          infos.childFirstName=childFirstName
+          infos.childName=childName
           infos.mail=form.value.mail 
           infos.phone=form.value.phone
           tile.content=infos
